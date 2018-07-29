@@ -1,0 +1,77 @@
+<div id="table" class="table-wrapper">
+  <div id="thead" class="table-head">
+    <div class="table-row" ng-style="{'width':$ctrl.width + 'vw'}">
+      <!-- checkBox -->
+      <div ng-if="$ctrl.isShowCheckbox" class="table-clomun checkbox-wrapper">
+        <input type="checkbox">
+      </div>
+      <div class="table-clomun" ng-style="clomun.style" ng-repeat="clomun in $ctrl.header">
+        <span ng-bind="clomun.title"></span>
+      </div>
+    </div>
+  </div>
+  <div id="tbody" class="table-body" ng-style="{'width':$ctrl.width + 'vw'}">
+    <div class="table-row" ng-repeat="row in $ctrl.data">
+      <!-- checkBox -->
+      <div ng-if="$ctrl.isShowCheckbox" class="table-clomun checkbox-wrapper">
+        <input type="checkbox">
+      </div>
+      <div class="table-clomun" ng-style="clomun.style" ng-repeat="clomun in $ctrl.header" ng-include="clomun.url">
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .table-wrapper {
+    overflow-x: auto;
+    border: 1px solid #ccc;
+    min-height: 100px;
+    width: 100%;
+  }
+
+  .table-wrapper .table-head {
+    background: white;
+    display: block;
+    overflow: hidden;
+  }
+
+  .table-wrapper .table-head.fixed {
+    box-shadow: 0px 3px 5px #aaa;
+    right: 20px;
+    left: 20px;
+  }
+
+  .table-wrapper .table-head .table-row {
+    display: flex;
+    height: 48px;
+    width: 100%;
+  }
+
+  .table-wrapper .table-head .table-row .table-clomun {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .table-wrapper .table-body {
+    display: block;
+  }
+
+  .table-wrapper .table-body .table-row {
+    display: flex;
+    min-height: 64px;
+    border-top: 1px solid #eeeeee;
+  }
+
+  .table-wrapper .table-body .table-row .table-clomun {
+    display: flex;
+    min-height: 64px;
+    align-items: center;
+  }
+
+  .table-wrapper .checkbox-wrapper {
+    width: 48px;
+    justify-content: center;
+  }
+</style>
